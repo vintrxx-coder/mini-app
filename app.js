@@ -3,7 +3,9 @@ const tg = window.Telegram.WebApp;
 // Розгортаємо на весь екран
 tg.expand();
 
-// Старі кнопки
+// --------------------------
+// СТАРІ КНОПКИ МЕНЮ
+// --------------------------
 document.getElementById("btn1").onclick = () => {
     alert("🔥 РЕЖИ");
 };
@@ -17,34 +19,14 @@ document.getElementById("btn3").onclick = () => {
 };
 
 // --------------------------
-// НОВА КНОПКА: Колесо Фортуни
+// КОЛЕСО ФОРТУНИ
 // --------------------------
-
-// Створюємо кнопку для запуску гри
-const spinBtn = document.createElement("button");
-spinBtn.innerText = "🎰 Колесо Фортуни";
-spinBtn.style.marginTop = "10px";
-spinBtn.style.padding = "10px 20px";
-spinBtn.style.fontSize = "16px";
-document.body.appendChild(spinBtn);
-
-// Контейнер для результату
-const resultDiv = document.createElement("div");
-resultDiv.style.marginTop = "20px";
-resultDiv.style.fontSize = "18px";
-resultDiv.style.fontWeight = "bold";
-document.body.appendChild(resultDiv);
-
-// Колесо
-const canvas = document.createElement("canvas");
-canvas.id = "wheel";
-canvas.width = 400;
-canvas.height = 400;
-canvas.style.display = "block";
-canvas.style.margin = "20px auto";
-document.body.appendChild(canvas);
-
+const wheelBtn = document.getElementById("btnWheel");
+const wheelContainer = document.getElementById("wheelContainer");
+const canvas = document.getElementById("wheel");
 const ctx = canvas.getContext('2d');
+const resultDiv = document.getElementById("result");
+
 const segments = ["10 ⭐","50 ⭐","100 ⭐","200 ⭐","500 ⭐","1000 ⭐"];
 const colors = ["#FF5733","#33FF57","#3357FF","#FF33A6","#FF8F33","#33FFF3"];
 const size = segments.length;
@@ -72,18 +54,18 @@ function drawWheel() {
     }
 }
 
-// Функція крутіння
+// Функція обертання колеса
 function spin() {
     if(spinning) return;
     spinning = true;
-    let spinAngle = Math.random() * 10 + 10; // випадковий кут
-    let duration = 3000; // тривалість анімації
+    const spinAngle = Math.random() * 10 + 10;
+    const duration = 3000;
     let start = null;
 
     function animate(timestamp) {
-        if (!start) start = timestamp;
-        let progress = timestamp - start;
-        let ease = 1 - Math.pow(1 - progress/duration, 3);
+        if(!start) start = timestamp;
+        const progress = timestamp - start;
+        const ease = 1 - Math.pow(1 - progress/duration, 3);
         angle += spinAngle * ease / 60;
         ctx.clearRect(0,0,400,400);
         ctx.save();
@@ -92,7 +74,8 @@ function spin() {
         ctx.translate(-200,-200);
         drawWheel();
         ctx.restore();
-        if(progress < duration){
+
+        if(progress < duration) {
             requestAnimationFrame(animate);
         } else {
             spinning = false;
@@ -104,8 +87,22 @@ function spin() {
     requestAnimationFrame(animate);
 }
 
-drawWheel();
-spinBtn.addEventListener('click', spin);
+// Показуємо колесо і додаємо кнопку "Крутити"
+wheelBtn.onclick = () => {
+    wheelContainer.style.display = "block";
+    drawWheel();
+
+    if(!document.getElementById("spinButton")) {
+        const spinBtn = document.createElement("button");
+        spinBtn.id = "spinButton";
+        spinBtn.innerText = "Крутити 🎡";
+        wheelContainer.appendChild(spinBtn);
+
+        spinBtn.addEventListener('click', spin);
+    }
+};
+
+
 
 
 
