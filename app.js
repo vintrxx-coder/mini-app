@@ -13,6 +13,7 @@ document.getElementById("btn2").onclick = () => {
 };
 
 document.getElementById("btn3").onclick = () => {
-    alert("ℹ️ Тут інфо про ап");
+    alert("ℹ️ Туо ап");
 
 };
+
