@@ -1,14 +1,32 @@
-<div class="app">
-    <h1>🚀 Головне меню</h1>
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Мій Mini App</title>
 
-    <button id="btn1">Режим</button>
-    <button id="btn2">Налаштування</button>
-    <button id="btn3">Інфо</button>
-    <button id="btnWheel">🎰 Колесо Фортуни</button> <!-- нова кнопка -->
+    <!-- Telegram Web App API -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
-    <!-- Контейнер для колеса, спочатку прихований -->
-    <div id="wheelContainer" style="display:none; text-align:center;">
-        <canvas id="wheel" width="400" height="400" style="margin-top:20px;"></canvas>
-        <div id="result" style="margin-top:20px; font-size:18px; font-weight:bold;"></div>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <h1>🚀 Головне меню</h1>
+
+        <button id="btn1">Режим</button>
+        <button id="btn2">Налаштування</button>
+        <button id="btn3">Інфо</button>
+        <button id="btnWheel">🎰 Колесо Фортуни</button>
+
+        <!-- Контейнер для колеса, спочатку прихований -->
+        <div id="wheelContainer" style="display:none; text-align:center;">
+            <canvas id="wheel" width="400" height="400" style="margin-top:20px;"></canvas>
+            <div id="result"></div>
+        </div>
     </div>
-</div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
+
