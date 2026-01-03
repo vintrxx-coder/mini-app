@@ -3,17 +3,7 @@ const tg = window.Telegram.WebApp;
 // Розгортаємо на весь екран
 tg.expand();
 
-// PROMPT для вставки шляху до фону (з дефолтним значенням)
-const bgPath = prompt("Введи шлях до свого зображення для фону:", "mobile.png");
-if (bgPath) {
-    // Встановлюємо фон
-    document.body.style.backgroundImage = `url('${bgPath}')`;
-    document.body.style.backgroundSize = "cover";
-    document.body.style.backgroundPosition = "center";
-    document.body.style.backgroundRepeat = "no-repeat";
-}
-
-// Функція для кнопок
+// Функції для кнопок
 document.getElementById("btn1").onclick = () => {
     alert("🔥 РЕЖИ");
 };
