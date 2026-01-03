@@ -1,0 +1,17 @@
+const tg = window.Telegram.WebApp;
+
+// Розгортаємо на весь екран
+tg.expand();
+
+// Функція для кнопок
+document.getElementById("btn1").onclick = () => {
+    alert("🔥 Ти відкрив режим");
+};
+
+document.getElementById("btn2").onclick = () => {
+    alert("⚙️ Тут налаштування");
+};
+
+document.getElementById("btn3").onclick = () => {
+    alert("ℹ️ Тут інфо про ап");
+};
