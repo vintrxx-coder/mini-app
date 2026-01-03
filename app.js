@@ -5,7 +5,7 @@ tg.expand();
 
 // Функція для кнопок
 document.getElementById("btn1").onclick = () => {
-    alert("🔥 KDKDKDKDK");
+    alert("🔥 РЕЖИ");
 };
 
 document.getElementById("btn2").onclick = () => {
