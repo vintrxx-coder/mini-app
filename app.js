@@ -5,7 +5,7 @@ tg.expand();
 
 // Функція для кнопок
 document.getElementById("btn1").onclick = () => {
-    alert("🔥 Ти відкрив режим");
+    alert("🔥 KDKDKDKDK");
 };
 
 document.getElementById("btn2").onclick = () => {
@@ -14,4 +14,5 @@ document.getElementById("btn2").onclick = () => {
 
 document.getElementById("btn3").onclick = () => {
     alert("ℹ️ Тут інфо про ап");
+
 };
