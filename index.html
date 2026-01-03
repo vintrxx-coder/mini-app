@@ -1,32 +1,66 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Мій Mini App</title>
 
-.app-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('Mobile.png'); /* твій фон з Figma */
-  background-size: cover;
-  background-position: center;
-  z-index: -1; /* позаду всього контенту */
-}
+    <!-- Telegram Web App API -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
-.app {
-  position: relative;
-  z-index: 1; /* щоб кнопки були поверх фону */
-  text-align: center;
-  padding-top: 100px;
-}
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Фон для всього додатку */
+        .app-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* позаду всіх елементів */
+            background-image: url('Mobile.png'); /* сюди встав свій PNG */
+            background-size: cover; /* покриває весь екран */
+            background-position: center; /* центр фону */
+            background-repeat: no-repeat;
+        }
 
-button {
-  margin: 10px;
-  padding: 15px 30px;
-  font-size: 18px;
-  cursor: pointer;
-}
+        /* Стиль для меню */
+        .app {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .app button {
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+    </style>
+</head>
+<body style="margin:0; padding:0;">
+    <div class="app-bg"></div>
+
+    <div class="app">
+        <h1>🚀 Головне меню</h1>
+
+        <button id="btn1">Режим</button>
+        <button id="btn2">Налаштування</button>
+        <button id="btn3">Інфо</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
+
 
