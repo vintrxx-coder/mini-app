@@ -1,67 +1,14 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <title>Мій Mini App</title>
+<div class="app">
+    <h1>🚀 Головне меню</h1>
 
-    <!-- Telegram Web App API -->
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <button id="btn1">Режим</button>
+    <button id="btn2">Налаштування</button>
+    <button id="btn3">Інфо</button>
+    <button id="btnWheel">🎰 Колесо Фортуни</button> <!-- нова кнопка -->
 
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* Фон для всього додатку */
-        .app-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* позаду всіх елементів */
-            background-image: url('mobile.png'); /* сюди встав свій PNG */
-            background-size: cover; /* покриває весь екран */
-            background-position: center; /* центр фону */
-            background-repeat: no-repeat;
-        }
-
-        /* Стиль для меню */
-        .app {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            color: white;
-            font-family: Arial, sans-serif;
-        }
-
-        .app button {
-            margin: 10px;
-            padding: 15px 30px;
-            font-size: 18px;
-            cursor: pointer;
-            border: none;
-            border-radius: 8px;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-        }
-    </style>
-</head>
-<body style="margin:0; padding:0;">
-    <div class="app-bg"></div>
-
-    <div class="app">
-        <h1>🚀 Головне меню</h1>
-
-        <button id="btn1">Режим</button>
-        <button id="btn2">Налаштування</button>
-        <button id="btn3">Інфо</button>
+    <!-- Контейнер для колеса, спочатку прихований -->
+    <div id="wheelContainer" style="display:none; text-align:center;">
+        <canvas id="wheel" width="400" height="400" style="margin-top:20px;"></canvas>
+        <div id="result" style="margin-top:20px; font-size:18px; font-weight:bold;"></div>
     </div>
-
-    <script src="app.js"></script>
-</body>
-</html>
-
-
-
-
+</div>
