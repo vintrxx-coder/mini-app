@@ -2,7 +2,7 @@ const tg = window.Telegram.WebApp;
 tg.expand();
 
 // --------------------------
-// МЕНЮ
+// СЕКЦІЇ
 // --------------------------
 const menuSection = document.getElementById("menuSection");
 const wheelContainer = document.getElementById("wheelContainer");
@@ -18,10 +18,11 @@ function openMenu() {
     hideAllSections();
     menuSection.style.display = "block";
 }
-
 window.openMenu = openMenu;
 
-// Старі кнопки
+// --------------------------
+// МЕНЮ КНОПКИ
+// --------------------------
 document.getElementById("btn1").onclick = () => alert("🔥 РЕЖИ");
 document.getElementById("btn2").onclick = () => alert("⚙️ Тут налаштування");
 document.getElementById("btn3").onclick = () => alert("ℹ️ Туо ап");
@@ -30,12 +31,11 @@ document.getElementById("btn3").onclick = () => alert("ℹ️ Туо ап");
 // ПОРТФОЛІО
 // --------------------------
 document.getElementById("btnPortfolio").onclick = () => {
-    hideAllSections();
-    portfolioSection.style.display = "block";
+    window.open("https://t.me/vintrxxproject/15", "_blank");
 };
 
 function contactMe() {
-    tg.openTelegramLink("https://t.me/ТВІЙ_USERNAME");
+    tg.openTelegramLink("https://t.me/v1ntrxx");
 }
 window.contactMe = contactMe;
 
@@ -100,7 +100,7 @@ function spin() {
         } else {
             spinning = false;
             const index = Math.floor((segments.length - (angle % (2*Math.PI)) / arc) % segments.length);
-            resultDiv.innerText = 🎉 Ви виграли: ${segments[index]};
+            resultDiv.innerText = `🎉 Ви виграли: ${segments[index]}`;
         }
     }
 
@@ -116,10 +116,22 @@ wheelBtn.onclick = () => {
         const spinBtn = document.createElement("button");
         spinBtn.id = "spinButton";
         spinBtn.innerText = "Крутити 🎡";
+        spinBtn.style.marginTop = "15px";
+        spinBtn.style.background = "linear-gradient(135deg, #6a11cb, #2575fc)";
+        spinBtn.style.color = "#fff";
+        spinBtn.style.borderRadius = "18px";
+        spinBtn.style.padding = "12px";
+        spinBtn.style.fontWeight = "bold";
+        spinBtn.style.cursor = "pointer";
+        spinBtn.style.transition = "all 0.3s ease";
+        spinBtn.onmouseover = () => spinBtn.style.transform = "translateY(-2px) scale(1.02)";
+        spinBtn.onmouseout = () => spinBtn.style.transform = "translateY(0)";
         wheelContainer.appendChild(spinBtn);
         spinBtn.onclick = spin;
     }
 };
+
+
 
 
 
