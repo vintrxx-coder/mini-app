@@ -10,8 +10,8 @@ body {
     text-align: center;
 }
 
-h1 {
-    margin-bottom: 30px;
+h1, h2 {
+    margin-bottom: 20px;
 }
 
 button {
@@ -31,45 +31,85 @@ button:hover {
     background: #1c5ed6;
 }
 
-/* Контейнер колеса */
-#wheelContainer {
-    margin-top: 20px;
-    text-align: center;
+/* СЕКЦІЇ */
+.section {
+    padding: 20px;
+    animation: fadeIn 0.25s ease-in;
 }
 
-/* Canvas колеса */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* КОЛЕСО */
 #wheel {
-    width: 300px;      /* компактно */
+    width: 300px;
     height: 300px;
-    max-width: 90vw;   /* адаптивність для мобільних */
+    max-width: 90vw;
     max-height: 90vw;
     border: 5px solid #2f80ed;
     border-radius: 50%;
-    background-color: #111;
-    box-shadow: 0 0 15px rgba(0, 128, 255, 0.5);
+    background: #111;
+    box-shadow: 0 0 15px rgba(47,128,237,0.5);
 }
 
-/* Кнопка "Крутити" */
-#spinButton {
-    margin-top: 15px;
-    padding: 12px 25px;
-    font-size: 16px;
-    border-radius: 12px;
-    border: none;
-    background: #f2994a;
-    color: white;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-#spinButton:hover {
-    background: #d87c1e;
-}
-
-/* Результат */
+/* РЕЗУЛЬТАТ */
 #result {
     margin-top: 15px;
     font-size: 18px;
     font-weight: bold;
     color: #ffcc00;
 }
+
+/* ПОРТФОЛІО */
+.about-text {
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.work-card {
+    background: #141414;
+    border-radius: 14px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(47,128,237,0.15);
+}
+
+.work-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.work-card h3 {
+    font-size: 14px;
+    margin: 6px 0 2px;
+}
+
+.work-card p {
+    font-size: 12px;
+    color: #aaa;
+}
+
+/* КНОПКИ ПОРТФОЛІО */
+.contact-btn {
+    background: linear-gradient(135deg, #2f80ed, #56ccf2);
+}
+
+.back-btn {
+    background: #222;
+}
+
