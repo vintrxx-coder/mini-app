@@ -11,22 +11,63 @@
 </head>
 <body>
     <div class="app">
-        <h1>🚀 Головне меню</h1>
 
-        <button id="btn1">Режим</button>
-        <button id="btn2">Налаштування</button>
-        <button id="btn3">Інфо</button>
-        <button id="btnWheel">🎰 Колесо Фортуни</button>
+        <!-- МЕНЮ -->
+        <div id="menuSection" class="section">
+            <h1>🚀 Головне меню</h1>
 
-        <!-- Контейнер для колеса, спочатку прихований -->
-        <div id="wheelContainer" style="display:none; text-align:center;">
-            <canvas id="wheel" width="400" height="400" style="margin-top:20px;"></canvas>
+            <button id="btn1">Режим</button>
+            <button id="btn2">Налаштування</button>
+            <button id="btn3">Інфо</button>
+            <button id="btnWheel">🎰 Колесо Фортуни</button>
+            <button id="btnPortfolio">🎨 Портфоліо</button>
+        </div>
+
+        <!-- КОЛЕСО ФОРТУНИ -->
+        <div id="wheelContainer" class="section" style="display:none; text-align:center;">
+            <h2>🎰 Колесо Фортуни</h2>
+            <canvas id="wheel" width="400" height="400"></canvas>
             <div id="result"></div>
         </div>
+
+        <!-- ПОРТФОЛІО -->
+        <div id="portfolioSection" class="section" style="display:none;">
+            <h2>🎨 Моє портфоліо</h2>
+
+            <p class="about-text">
+                Я дизайнер. Роблю банери, обкладинки та пости для Telegram.
+                Працюю швидко та якісно.
+            </p>
+
+            <div class="portfolio-grid">
+                <div class="work-card">
+                    <img src="img/work1.jpg">
+                    <h3>Telegram-банер</h3>
+                    <p>Реклама каналу</p>
+                </div>
+
+                <div class="work-card">
+                    <img src="img/work2.jpg">
+                    <h3>Обкладинка</h3>
+                    <p>Оформлення каналу</p>
+                </div>
+
+                <div class="work-card">
+                    <img src="img/work3.jpg">
+                    <h3>Пост</h3>
+                    <p>Соцмережі</p>
+                </div>
+            </div>
+
+            <button class="contact-btn" onclick="contactMe()">✉️ Написати мені</button>
+            <button class="back-btn" onclick="openMenu()">⬅️ Назад</button>
+        </div>
+
     </div>
 
     <script src="app.js"></script>
 </body>
 </html>
+
 
 
