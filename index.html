@@ -3,10 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Мій Mini App</title>
-
-    <!-- Telegram Web App API -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,11 +13,11 @@
         <div id="menuSection" class="section">
             <h1>🚀 Головне меню</h1>
 
-            <button id="btn1">Режим</button>
-            <button id="btn2">Налаштування</button>
-            <button id="btn3">Інфо</button>
-            <button id="btnWheel">🎰 Колесо Фортуни</button>
-            <button id="btnPortfolio">🎨 Портфоліо</button>
+            <button class="glass-btn" id="btn1">Режим</button>
+            <button class="glass-btn" id="btn2">Налаштування</button>
+            <button class="glass-btn" id="btn3">Інфо</button>
+            <button class="glass-btn" id="btnWheel">🎰 Колесо Фортуни</button>
+            <button class="glass-btn" id="btnPortfolio">🎨 Портфоліо</button>
         </div>
 
         <!-- КОЛЕСО ФОРТУНИ -->
@@ -28,42 +25,19 @@
             <h2>🎰 Колесо Фортуни</h2>
             <canvas id="wheel" width="400" height="400"></canvas>
             <div id="result"></div>
+            <button id="spinButton" class="glass-btn">Крутити 🎡</button>
+            <button class="glass-btn back-btn" onclick="openMenu()">⬅️ Назад</button>
         </div>
 
         <!-- ПОРТФОЛІО -->
-        <div id="portfolioSection" class="section" style="display:none;">
+        <div id="portfolioSection" class="section" style="display:none; text-align:center;">
             <h2>🎨 Моє портфоліо</h2>
-
             <p class="about-text">
-                Я дизайнер. Роблю банери, обкладинки та пости для Telegram.
+                Я дизайнер. Роблю банери, обкладинки та пости для Telegram.<br>
                 Працюю швидко та якісно.
             </p>
-
-            <div class="portfolio-grid">
-                <div class="work-card">
-                    <img src="img/work1.jpg">
-                    <h3>Telegram-банер</h3>
-                    <p>Реклама каналу</p>
-                </div>
-
-                <div class="work-card">
-                    <img src="img/work2.jpg">
-                    <h3>Обкладинка</h3>
-                    <p>Оформлення каналу</p>
-                </div>
-
-                <div class="work-card">
-                    <img src="img/work3.jpg">
-                    <h3>Пост</h3>
-                    <p>Соцмережі</p>
-                </div>
-            </div>
-
-            <!-- Кнопки портфоліо -->
-            <div class="portfolio-buttons">
-                <button class="contact-btn" onclick="contactMe()">✉️ Замовити дизайн</button>
-                <button class="back-btn" onclick="openMenu()">⬅️ Назад</button>
-            </div>
+            <button class="glass-btn contact-btn" onclick="contactMe()">✉️ Замовити дизайн</button>
+            <button class="glass-btn back-btn" onclick="openMenu()">⬅️ Назад</button>
         </div>
 
     </div>
@@ -71,4 +45,6 @@
     <script src="app.js"></script>
 </body>
 </html>
+
+
 
