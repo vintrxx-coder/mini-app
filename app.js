@@ -42,10 +42,10 @@ window.contactMe = contactMe;
 // --------------------------
 // КОЛЕСО ФОРТУНИ
 // --------------------------
-const wheelBtn = document.getElementById("btnWheel");
 const canvas = document.getElementById("wheel");
 const ctx = canvas.getContext("2d");
 const resultDiv = document.getElementById("result");
+const spinButton = document.getElementById("spinButton");
 
 const segments = ["10 ⭐️","50 ⭐️","100 ⭐️","200 ⭐️","500 ⭐️","1000 ⭐️"];
 const colors = ["#FF5733","#33FF57","#3357FF","#FF33A6","#FF8F33","#33FFF3"];
@@ -107,29 +107,15 @@ function spin() {
     requestAnimationFrame(animate);
 }
 
-wheelBtn.onclick = () => {
+document.getElementById("btnWheel").onclick = () => {
     hideAllSections();
     wheelContainer.style.display = "block";
     drawWheel();
-
-    if (!document.getElementById("spinButton")) {
-        const spinBtn = document.createElement("button");
-        spinBtn.id = "spinButton";
-        spinBtn.innerText = "Крутити 🎡";
-        spinBtn.style.marginTop = "15px";
-        spinBtn.style.background = "linear-gradient(135deg, #6a11cb, #2575fc)";
-        spinBtn.style.color = "#fff";
-        spinBtn.style.borderRadius = "18px";
-        spinBtn.style.padding = "12px";
-        spinBtn.style.fontWeight = "bold";
-        spinBtn.style.cursor = "pointer";
-        spinBtn.style.transition = "all 0.3s ease";
-        spinBtn.onmouseover = () => spinBtn.style.transform = "translateY(-2px) scale(1.02)";
-        spinBtn.onmouseout = () => spinBtn.style.transform = "translateY(0)";
-        wheelContainer.appendChild(spinBtn);
-        spinBtn.onclick = spin;
-    }
 };
+
+spinButton.onclick = spin;
+
+
 
 
 
