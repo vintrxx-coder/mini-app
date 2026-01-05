@@ -1,111 +1,4 @@
 const tg = window.Telegram.WebApp;
-tg.expand();
-
-// --------------------------
-// СЕКЦІЇ
-// --------------------------
-const langSection = document.getElementById("langSection");
-const menuSection = document.getElementById("menuSection");
-const wheelContainer = document.getElementById("wheelContainer");
-const portfolioSection = document.getElementById("portfolioSection");
-const paymentSection = document.getElementById("paymentSection");
-
-function hideAllSections() {
-    langSection.style.display = "none";
-    menuSection.style.display = "none";
-    wheelContainer.style.display = "none";
-    portfolioSection.style.display = "none";
-    if(paymentSection) paymentSection.style.display = "none";
-}
-
-// --------------------------
-// ВИБІР МОВИ
-// --------------------------
-let selectedLang = localStorage.getItem("lang") || null;
-
-const texts = {
-    ua: {
-        menuTitle: "🚀 Головне меню",
-        btn1: "Режим",
-        btn2: "Налаштування",
-        btn3: "Інфо",
-        wheelBtn: "🎰 Колесо Фортуни",
-        portfolioBtn: "🎨 Портфоліо",
-        paymentBtn: "💰 Оплата",
-        paymentTitle: "💰 Оплата",
-        paymentText: "Оберіть спосіб оплати:",
-        starsBtn: "⭐ Оплата зірками",
-        cryptoBtn: "💎 Оплата криптовалютою",
-        backBtn: "⬅️ Назад",
-        contactBtn: "✉️ Замовити дизайн"
-    },
-    ru: {
-        menuTitle: "🚀 Главное меню",
-        btn1: "Режим",
-        btn2: "Настройки",
-        btn3: "Инфо",
-        wheelBtn: "🎰 Колесо Фортуны",
-        portfolioBtn: "🎨 Портфолио",
-        paymentBtn: "💰 Оплата",
-        paymentTitle: "💰 Оплата",
-        paymentText: "Выберите способ оплаты:",
-        starsBtn: "⭐ Оплата звёздами",
-        cryptoBtn: "💎 Оплата криптовалютой",
-        backBtn: "⬅️ Назад",
-        contactBtn: "✉️ Заказать дизайн"
-    },
-    en: {
-        menuTitle: "🚀 Main Menu",
-        btn1: "Mode",
-        btn2: "Settings",
-        btn3: "Info",
-        wheelBtn: "🎰 Wheel of Fortune",
-        portfolioBtn: "🎨 Portfolio",
-        paymentBtn: "💰 Payment",
-        paymentTitle: "💰 Payment",
-        paymentText: "Choose payment method:",
-        starsBtn: "⭐ Pay with Stars",
-        cryptoBtn: "💎 Pay with Crypto",
-        backBtn: "⬅️ Back",
-        contactBtn: "✉️ Order Design"
-    }
-};
-
-function applyLang() {
-    if(!selectedLang) return;
-    const t = texts[selectedLang];
-
-    document.getElementById("menuTitle").innerText = t.menuTitle;
-    document.getElementById("btn1").innerText = t.btn1;
-    document.getElementById("btn2").innerText = t.btn2;
-    document.getElementById("btn3").innerText = t.btn3;
-    document.getElementById("btnWheel").innerText = t.wheelBtn;
-    document.getElementById("btnPortfolio").innerText = t.portfolioBtn;
-    document.getElementById("btnPayment").innerText = t.paymentBtn;
-
-    document.getElementById("paymentTitle").innerText = t.paymentTitle;
-    document.getElementById("paymentText").innerText = t.paymentText;
-    document.getElementById("btnStars").innerText = t.starsBtn;
-    document.getElementById("btnCrypto").innerText = t.cryptoBtn;
-
-    const backBtns = document.querySelectorAll(".back-btn");
-    backBtns.forEach(b => b.innerText = t.backBtn);
-
-    const contactBtns = document.querySelectorAll(".contact-btn");
-    contactBtns.forEach(b => b.innerText = t.contactBtn);
-}
-
-// Обробка кнопок вибору мови
-document.getElementById("btnUA").onclick = () => { selectedLang="ua"; localStorage.setItem("lang","ua"); hideAllSections(); menuSection.style.display="block"; applyLang(); };
-document.getElementById("btnRU").onclick = () => { selectedLang="ru"; localStorage.setItem("lang","ru"); hideAllSections(); menuSection.style.display="block"; applyLang(); };
-document.getElementById("btnEN").onclick = () => { selectedLang="en"; localStorage.setItem("lang","en"); hideAllSections(); menuSection.style.display="block"; applyLang(); };
-
-// Якщо мова вже обрана, показуємо меню
-if(selectedLang) {
-    hideAllSections();
-    menuSection.style.display = "block";
-    applyLang();
-}
 
 // --------------------------
 // МЕНЮ КНОПКИ
@@ -124,28 +17,44 @@ function contactMe() {
 window.contactMe = contactMe;
 
 // --------------------------
+// КОПІЮВАННЯ КРИПТО
+// --------------------------
+function copyToClipboard(id) {
+    const text = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(text)
+        .then(() => alert("✔ Адресу скопійовано!"))
+        .catch(() => alert("❌ Не вдалося скопіювати"));
+}
+window.copyToClipboard = copyToClipboard;
+
+// --------------------------
 // ОПЛАТА
 // --------------------------
 document.getElementById("btnPayment").onclick = () => {
     hideAllSections();
-    if(paymentSection) paymentSection.style.display = "block";
+    document.getElementById("paymentSection").style.display = "block";
 }
 
-// ⭐ Оплата зірками — одразу на канал
-document.getElementById("btnStars").onclick = () => {
+// ⭐️ Оплата зірками — одразу на канал
+document.getElementById("btnStars")?.addEventListener('click', () => {
     window.open("https://t.me/+6JmPwNPvDVk2NzBi", "_blank");
-}
+});
 
-// 💎 Оплата криптовалютою TON / USDT TON — одразу на профіль
-document.getElementById("btnCrypto").onclick = () => {
-    tg.openTelegramLink("https://t.me/v1ntrxx");
+// 💎 Оплата криптовалютою TON / USDT TON
+document.getElementById("btnCrypto")?.addEventListener('click', () => {
+    openPaymentSection();
+});
+
+function openPaymentSection() {
+    hideAllSections();
+    document.getElementById("paymentSection").style.display = "block";
 }
 
 // --------------------------
 // КОЛЕСО ФОРТУНИ
 // --------------------------
 const canvas = document.getElementById("wheel");
-const ctx = canvas.getContext("2d");
+const ctx = canvas?.getContext("2d");
 const resultDiv = document.getElementById("result");
 const spinButton = document.getElementById("spinButton");
 
@@ -156,6 +65,7 @@ let angle = 0;
 let spinning = false;
 
 function drawWheel() {
+    if(!ctx) return;
     for (let i = 0; i < segments.length; i++) {
         ctx.beginPath();
         ctx.fillStyle = colors[i];
@@ -211,19 +121,25 @@ function spin() {
 
 document.getElementById("btnWheel").onclick = () => {
     hideAllSections();
-    wheelContainer.style.display = "block";
+    document.getElementById("wheelContainer").style.display = "block";
     drawWheel();
 };
 
-spinButton.onclick = spin;
+spinButton?.addEventListener("click", spin);
 
 // --------------------------
 // Функція відкриття меню
 // --------------------------
 function openMenu() {
     hideAllSections();
-    menuSection.style.display = "block";
+    document.getElementById("menuSection").style.display = "block";
 }
 window.openMenu = openMenu;
 
-
+// --------------------------
+// Приховати всі секції
+// --------------------------
+function hideAllSections() {
+    const sections = document.querySelectorAll(".section");
+    sections.forEach(sec => sec.style.display = "none");
+}
