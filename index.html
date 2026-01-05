@@ -9,16 +9,24 @@
 <body>
     <div class="app">
 
+        <!-- ВИБІР МОВИ -->
+        <div id="langSection" class="section" style="text-align:center;">
+            <h2>🌐 Оберіть мову / Choose Language / Выберите язык</h2>
+            <button class="glass-btn" id="btnUA">🇺🇦 Українська</button>
+            <button class="glass-btn" id="btnRU">🇷🇺 Русский</button>
+            <button class="glass-btn" id="btnEN">🇬🇧 English</button>
+        </div>
+
         <!-- МЕНЮ -->
-        <div id="menuSection" class="section">
-            <h1>🚀 Головне меню</h1>
+        <div id="menuSection" class="section" style="display:none;">
+            <h1 id="menuTitle">🚀 Головне меню</h1>
 
             <button class="glass-btn" id="btn1">Режим</button>
             <button class="glass-btn" id="btn2">Налаштування</button>
             <button class="glass-btn" id="btn3">Інфо</button>
             <button class="glass-btn" id="btnWheel">🎰 Колесо Фортуни</button>
             <button class="glass-btn" id="btnPortfolio">🎨 Портфоліо</button>
-            <button class="glass-btn" id="btnPayment">💰 Оплата</button> <!-- нова кнопка -->
+            <button class="glass-btn" id="btnPayment">💰 Оплата</button>
         </div>
 
         <!-- КОЛЕСО ФОРТУНИ -->
@@ -43,10 +51,10 @@
 
         <!-- ОПЛАТА -->
         <div id="paymentSection" class="section" style="display:none; text-align:center;">
-            <h2>💰 Оплата</h2>
-            <p>Оберіть спосіб оплати:</p>
+            <h2 id="paymentTitle">💰 Оплата</h2>
+            <p id="paymentText">Оберіть спосіб оплати:</p>
             <button class="glass-btn" id="btnStars">⭐ Оплата зірками</button>
-            <!-- тут пізніше можна додати TON / Monobank -->
+            <button class="glass-btn" id="btnCrypto">💎 Оплата криптовалютою</button>
             <button class="glass-btn back-btn" onclick="openMenu()">⬅️ Назад</button>
         </div>
 
@@ -55,6 +63,8 @@
     <script src="app.js"></script>
 </body>
 </html>
+
+
 
 
 
