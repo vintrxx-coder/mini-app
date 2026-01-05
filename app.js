@@ -7,7 +7,7 @@ tg.expand();
 const menuSection = document.getElementById("menuSection");
 const wheelContainer = document.getElementById("wheelContainer");
 const portfolioSection = document.getElementById("portfolioSection");
-const paymentSection = document.getElementById("paymentSection"); // нова секція для оплати
+const paymentSection = document.getElementById("paymentSection");
 
 function hideAllSections() {
     menuSection.style.display = "none";
@@ -44,19 +44,19 @@ window.contactMe = contactMe;
 // --------------------------
 // ОПЛАТА
 // --------------------------
-
-// Додаємо кнопку «Оплата» у меню
 document.getElementById("btnPayment").onclick = () => {
     hideAllSections();
     if(paymentSection) paymentSection.style.display = "block";
 }
 
-// Обробка кнопки «Оплата зірками»
+// Вибір зірок
 const btnStars = document.getElementById("btnStars");
 if(btnStars) {
     btnStars.onclick = () => {
-        // Тут можна відправляти інвойс через tg.sendData або просто показати повідомлення
-        tg.sendData("Оплата зірками"); // це відправить дані боту, щоб він створив invoice
+        const amount = prompt("Введіть кількість зірок для оплати (наприклад, 5, 10, 20):");
+        if(!amount || isNaN(amount) || amount <= 0) return alert("Некоректна сума!");
+        // Надсилаємо дані боту
+        tg.sendData(JSON.stringify({ type: "stars_payment", amount: parseInt(amount) }));
         alert("Відкрийте інвойс у Telegram для оплати зірками ⭐");
     }
 }
@@ -136,6 +136,8 @@ document.getElementById("btnWheel").onclick = () => {
 };
 
 spinButton.onclick = spin;
+
+
 
 
 
