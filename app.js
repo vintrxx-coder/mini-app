@@ -4,23 +4,69 @@ tg.expand();
 // --------------------------
 // СЕКЦІЇ
 // --------------------------
+const langSection = document.getElementById("langSection");
 const menuSection = document.getElementById("menuSection");
 const wheelContainer = document.getElementById("wheelContainer");
 const portfolioSection = document.getElementById("portfolioSection");
 const paymentSection = document.getElementById("paymentSection");
 
 function hideAllSections() {
+    langSection.style.display = "none";
     menuSection.style.display = "none";
     wheelContainer.style.display = "none";
     portfolioSection.style.display = "none";
     if(paymentSection) paymentSection.style.display = "none";
 }
 
-function openMenu() {
+// --------------------------
+// ВИБІР МОВИ
+// --------------------------
+let selectedLang = localStorage.getItem("lang") || null;
+
+const texts = {
+    ua: {
+        menuTitle: "🚀 Головне меню",
+        paymentTitle: "💰 Оплата",
+        paymentText: "Оберіть спосіб оплати:",
+        starsBtn: "⭐ Оплата зірками",
+        cryptoBtn: "💎 Оплата криптовалютою",
+    },
+    ru: {
+        menuTitle: "🚀 Главное меню",
+        paymentTitle: "💰 Оплата",
+        paymentText: "Выберите способ оплаты:",
+        starsBtn: "⭐ Оплата звёздами",
+        cryptoBtn: "💎 Оплата криптовалютой",
+    },
+    en: {
+        menuTitle: "🚀 Main Menu",
+        paymentTitle: "💰 Payment",
+        paymentText: "Choose payment method:",
+        starsBtn: "⭐ Pay with Stars",
+        cryptoBtn: "💎 Pay with Crypto",
+    }
+};
+
+function applyLang() {
+    if(!selectedLang) return;
+    document.getElementById("menuTitle").innerText = texts[selectedLang].menuTitle;
+    document.getElementById("paymentTitle").innerText = texts[selectedLang].paymentTitle;
+    document.getElementById("paymentText").innerText = texts[selectedLang].paymentText;
+    document.getElementById("btnStars").innerText = texts[selectedLang].starsBtn;
+    document.getElementById("btnCrypto").innerText = texts[selectedLang].cryptoBtn;
+}
+
+// Обробка кнопок вибору мови
+document.getElementById("btnUA").onclick = () => { selectedLang="ua"; localStorage.setItem("lang","ua"); hideAllSections(); menuSection.style.display="block"; applyLang(); };
+document.getElementById("btnRU").onclick = () => { selectedLang="ru"; localStorage.setItem("lang","ru"); hideAllSections(); menuSection.style.display="block"; applyLang(); };
+document.getElementById("btnEN").onclick = () => { selectedLang="en"; localStorage.setItem("lang","en"); hideAllSections(); menuSection.style.display="block"; applyLang(); };
+
+// Якщо мова вже обрана, показуємо меню
+if(selectedLang) {
     hideAllSections();
     menuSection.style.display = "block";
+    applyLang();
 }
-window.openMenu = openMenu;
 
 // --------------------------
 // МЕНЮ КНОПКИ
@@ -49,16 +95,25 @@ document.getElementById("btnPayment").onclick = () => {
     if(paymentSection) paymentSection.style.display = "block";
 }
 
-// Вибір зірок
-const btnStars = document.getElementById("btnStars");
-if(btnStars) {
-    btnStars.onclick = () => {
-        const amount = prompt("Введіть кількість зірок для оплати (наприклад, 5, 10, 20):");
-        if(!amount || isNaN(amount) || amount <= 0) return alert("Некоректна сума!");
-        // Надсилаємо дані боту
-        tg.sendData(JSON.stringify({ type: "stars_payment", amount: parseInt(amount) }));
-        alert("Відкрийте інвойс у Telegram для оплати зірками ⭐");
-    }
+// ⭐ Оплата зірками
+document.getElementById("btnStars").onclick = () => {
+    const amount = prompt("Введіть кількість зірок для оплати (наприклад, 5, 10, 20):");
+    if(!amount || isNaN(amount) || amount <= 0) return alert("Некоректна сума!");
+    tg.sendData(JSON.stringify({ type: "stars_payment", amount: parseInt(amount) }));
+    window.open("https://t.me/+6JmPwNPvDVk2NzBi", "_blank");
+}
+
+// 💎 Оплата криптовалютою TON / USDT TON
+document.getElementById("btnCrypto").onclick = () => {
+    const msg = `
+💎 Оплата криптовалютою
+
+TON / USDT (TON Network):
+Адреса: UQBRaEiFd3KkCsaezd9_KvGZgBBxfKtvo6kfyKRwlLNgD76A
+
+❗ Якщо у вас інша мережа — напишіть мені в особисті: t.me/v1ntrxx
+    `;
+    alert(msg);
 }
 
 // --------------------------
@@ -137,18 +192,11 @@ document.getElementById("btnWheel").onclick = () => {
 
 spinButton.onclick = spin;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// --------------------------
+// Функція відкриття меню
+// --------------------------
+function openMenu() {
+    hideAllSections();
+    menuSection.style.display = "block";
+}
+window.openMenu = openMenu;
