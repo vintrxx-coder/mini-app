@@ -5,7 +5,7 @@ const tg = window.Telegram.WebApp;
 // --------------------------
 document.getElementById("btn1").onclick = () => alert("🔥 РЕЖИ");
 document.getElementById("btn2").onclick = () => alert("⚙️ Тут налаштування");
-document.getElementById("btn3").onclick = () => alert("ℹ️ Туо ап");
+document.getElementById("btn3").onclick = () => alert("ℹ️ Твій ап");
 
 document.getElementById("btnPortfolio").onclick = () => {
     window.open("https://t.me/vintrxxproject/15", "_blank");
@@ -33,53 +33,44 @@ window.copyToClipboard = copyToClipboard;
 document.getElementById("btnPayment").onclick = () => {
     hideAllSections();
     document.getElementById("paymentSection").style.display = "block";
-}
+};
 
-// ⭐️ Оплата зірками — одразу на канал
-document.getElementById("btnStars")?.addEventListener('click', () => {
-    window.open("https://t.me/starspaymenttt");
+document.getElementById("btnStars")?.addEventListener("click", () => {
+    window.open("https://t.me/starspaymenttt", "_blank");
 });
-
-// 💎 Оплата криптовалютою TON / USDT TON
-document.getElementById("btnCrypto")?.addEventListener('click', () => {
-    openPaymentSection();
-});
-
-function openPaymentSection() {
-    hideAllSections();
-    document.getElementById("paymentSection").style.display = "block";
-}
 
 // --------------------------
 // КОЛЕСО ФОРТУНИ
 // --------------------------
 const canvas = document.getElementById("wheel");
-const ctx = canvas?.getContext("2d");
+const ctx = canvas.getContext("2d");
 const resultDiv = document.getElementById("result");
 const spinButton = document.getElementById("spinButton");
 
-const segments = ["10 ⭐️","50 ⭐️","100 ⭐️","200 ⭐️","500 ⭐️","1000 ⭐️"];
-const colors = ["#FF5733","#33FF57","#3357FF","#FF33A6","#FF8F33","#33FFF3"];
-const arc = 2 * Math.PI / segments.length;
+const segments = ["10 ⭐️", "50 ⭐️", "100 ⭐️", "200 ⭐️", "500 ⭐️", "1000 ⭐️"];
+const colors = ["#FF5733", "#33FF57", "#3357FF", "#FF33A6", "#FF8F33", "#33FFF3"];
+const arc = (2 * Math.PI) / segments.length;
+
 let angle = 0;
 let spinning = false;
 
 function drawWheel() {
-    if(!ctx) return;
+    ctx.clearRect(0, 0, 400, 400);
+
     for (let i = 0; i < segments.length; i++) {
         ctx.beginPath();
         ctx.fillStyle = colors[i];
-        ctx.moveTo(200,200);
-        ctx.arc(200,200,200, i*arc, (i+1)*arc);
+        ctx.moveTo(200, 200);
+        ctx.arc(200, 200, 200, i * arc, (i + 1) * arc);
         ctx.fill();
 
         ctx.save();
-        ctx.translate(200,200);
-        ctx.rotate(i*arc + arc/2);
+        ctx.translate(200, 200);
+        ctx.rotate(i * arc + arc / 2);
         ctx.textAlign = "right";
         ctx.fillStyle = "#fff";
         ctx.font = "bold 18px Arial";
-        ctx.fillText(segments[i], 190, 10);
+        ctx.fillText(segments[i], 180, 10);
         ctx.restore();
     }
 }
@@ -98,12 +89,11 @@ function spin() {
         const ease = 1 - Math.pow(1 - progress / duration, 3);
 
         angle += spinAngle * ease / 60;
-        ctx.clearRect(0,0,400,400);
 
         ctx.save();
-        ctx.translate(200,200);
+        ctx.translate(200, 200);
         ctx.rotate(angle);
-        ctx.translate(-200,-200);
+        ctx.translate(-200, -200);
         drawWheel();
         ctx.restore();
 
@@ -111,7 +101,13 @@ function spin() {
             requestAnimationFrame(animate);
         } else {
             spinning = false;
-            const index = Math.floor((segments.length - (angle % (2*Math.PI)) / arc) % segments.length);
+            const index =
+                Math.floor(
+                    (segments.length -
+                        ((angle % (2 * Math.PI)) / arc)) %
+                        segments.length
+                );
+
             resultDiv.innerText = `🎉 Ви виграли: ${segments[index]}`;
         }
     }
@@ -125,10 +121,10 @@ document.getElementById("btnWheel").onclick = () => {
     drawWheel();
 };
 
-spinButton?.addEventListener("click", spin);
+spinButton.addEventListener("click", spin);
 
 // --------------------------
-// Функція відкриття меню
+// НАВІГАЦІЯ
 // --------------------------
 function openMenu() {
     hideAllSections();
@@ -136,11 +132,9 @@ function openMenu() {
 }
 window.openMenu = openMenu;
 
-// --------------------------
-// Приховати всі секції
-// --------------------------
 function hideAllSections() {
-    const sections = document.querySelectorAll(".section");
-    sections.forEach(sec => sec.style.display = "none");
+    document.querySelectorAll(".section").forEach(sec => {
+        sec.style.display = "none";
+    });
 }
 
