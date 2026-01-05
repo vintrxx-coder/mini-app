@@ -37,7 +37,7 @@ document.getElementById("btnPayment").onclick = () => {
 
 // ⭐️ Оплата зірками — одразу на канал
 document.getElementById("btnStars")?.addEventListener('click', () => {
-    window.open("https://t.me/+6JmPwNPvDVk2NzBi", "_blank");
+    window.open("https://t.me/starspaymenttt");
 });
 
 // 💎 Оплата криптовалютою TON / USDT TON
@@ -143,3 +143,4 @@ function hideAllSections() {
     const sections = document.querySelectorAll(".section");
     sections.forEach(sec => sec.style.display = "none");
 }
+
