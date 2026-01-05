@@ -26,34 +26,73 @@ let selectedLang = localStorage.getItem("lang") || null;
 const texts = {
     ua: {
         menuTitle: "🚀 Головне меню",
+        btn1: "Режим",
+        btn2: "Налаштування",
+        btn3: "Інфо",
+        wheelBtn: "🎰 Колесо Фортуни",
+        portfolioBtn: "🎨 Портфоліо",
+        paymentBtn: "💰 Оплата",
         paymentTitle: "💰 Оплата",
         paymentText: "Оберіть спосіб оплати:",
         starsBtn: "⭐ Оплата зірками",
         cryptoBtn: "💎 Оплата криптовалютою",
+        backBtn: "⬅️ Назад",
+        contactBtn: "✉️ Замовити дизайн"
     },
     ru: {
         menuTitle: "🚀 Главное меню",
+        btn1: "Режим",
+        btn2: "Настройки",
+        btn3: "Инфо",
+        wheelBtn: "🎰 Колесо Фортуны",
+        portfolioBtn: "🎨 Портфолио",
+        paymentBtn: "💰 Оплата",
         paymentTitle: "💰 Оплата",
         paymentText: "Выберите способ оплаты:",
         starsBtn: "⭐ Оплата звёздами",
         cryptoBtn: "💎 Оплата криптовалютой",
+        backBtn: "⬅️ Назад",
+        contactBtn: "✉️ Заказать дизайн"
     },
     en: {
         menuTitle: "🚀 Main Menu",
+        btn1: "Mode",
+        btn2: "Settings",
+        btn3: "Info",
+        wheelBtn: "🎰 Wheel of Fortune",
+        portfolioBtn: "🎨 Portfolio",
+        paymentBtn: "💰 Payment",
         paymentTitle: "💰 Payment",
         paymentText: "Choose payment method:",
         starsBtn: "⭐ Pay with Stars",
         cryptoBtn: "💎 Pay with Crypto",
+        backBtn: "⬅️ Back",
+        contactBtn: "✉️ Order Design"
     }
 };
 
 function applyLang() {
     if(!selectedLang) return;
-    document.getElementById("menuTitle").innerText = texts[selectedLang].menuTitle;
-    document.getElementById("paymentTitle").innerText = texts[selectedLang].paymentTitle;
-    document.getElementById("paymentText").innerText = texts[selectedLang].paymentText;
-    document.getElementById("btnStars").innerText = texts[selectedLang].starsBtn;
-    document.getElementById("btnCrypto").innerText = texts[selectedLang].cryptoBtn;
+    const t = texts[selectedLang];
+
+    document.getElementById("menuTitle").innerText = t.menuTitle;
+    document.getElementById("btn1").innerText = t.btn1;
+    document.getElementById("btn2").innerText = t.btn2;
+    document.getElementById("btn3").innerText = t.btn3;
+    document.getElementById("btnWheel").innerText = t.wheelBtn;
+    document.getElementById("btnPortfolio").innerText = t.portfolioBtn;
+    document.getElementById("btnPayment").innerText = t.paymentBtn;
+
+    document.getElementById("paymentTitle").innerText = t.paymentTitle;
+    document.getElementById("paymentText").innerText = t.paymentText;
+    document.getElementById("btnStars").innerText = t.starsBtn;
+    document.getElementById("btnCrypto").innerText = t.cryptoBtn;
+
+    const backBtns = document.querySelectorAll(".back-btn");
+    backBtns.forEach(b => b.innerText = t.backBtn);
+
+    const contactBtns = document.querySelectorAll(".contact-btn");
+    contactBtns.forEach(b => b.innerText = t.contactBtn);
 }
 
 // Обробка кнопок вибору мови
@@ -75,9 +114,6 @@ document.getElementById("btn1").onclick = () => alert("🔥 РЕЖИ");
 document.getElementById("btn2").onclick = () => alert("⚙️ Тут налаштування");
 document.getElementById("btn3").onclick = () => alert("ℹ️ Туо ап");
 
-// --------------------------
-// ПОРТФОЛІО
-// --------------------------
 document.getElementById("btnPortfolio").onclick = () => {
     window.open("https://t.me/vintrxxproject/15", "_blank");
 };
@@ -95,25 +131,14 @@ document.getElementById("btnPayment").onclick = () => {
     if(paymentSection) paymentSection.style.display = "block";
 }
 
-// ⭐ Оплата зірками
+// ⭐ Оплата зірками — одразу на канал
 document.getElementById("btnStars").onclick = () => {
-    const amount = prompt("Введіть кількість зірок для оплати (наприклад, 5, 10, 20):");
-    if(!amount || isNaN(amount) || amount <= 0) return alert("Некоректна сума!");
-    tg.sendData(JSON.stringify({ type: "stars_payment", amount: parseInt(amount) }));
     window.open("https://t.me/+6JmPwNPvDVk2NzBi", "_blank");
 }
 
-// 💎 Оплата криптовалютою TON / USDT TON
+// 💎 Оплата криптовалютою TON / USDT TON — одразу на профіль
 document.getElementById("btnCrypto").onclick = () => {
-    const msg = `
-💎 Оплата криптовалютою
-
-TON / USDT (TON Network):
-Адреса: UQBRaEiFd3KkCsaezd9_KvGZgBBxfKtvo6kfyKRwlLNgD76A
-
-❗ Якщо у вас інша мережа — напишіть мені в особисті: t.me/v1ntrxx
-    `;
-    alert(msg);
+    tg.openTelegramLink("https://t.me/v1ntrxx");
 }
 
 // --------------------------
@@ -200,3 +225,5 @@ function openMenu() {
     menuSection.style.display = "block";
 }
 window.openMenu = openMenu;
+
+
