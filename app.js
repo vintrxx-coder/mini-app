@@ -7,11 +7,13 @@ tg.expand();
 const menuSection = document.getElementById("menuSection");
 const wheelContainer = document.getElementById("wheelContainer");
 const portfolioSection = document.getElementById("portfolioSection");
+const paymentSection = document.getElementById("paymentSection"); // нова секція для оплати
 
 function hideAllSections() {
     menuSection.style.display = "none";
     wheelContainer.style.display = "none";
     portfolioSection.style.display = "none";
+    if(paymentSection) paymentSection.style.display = "none";
 }
 
 function openMenu() {
@@ -38,6 +40,26 @@ function contactMe() {
     tg.openTelegramLink("https://t.me/v1ntrxx");
 }
 window.contactMe = contactMe;
+
+// --------------------------
+// ОПЛАТА
+// --------------------------
+
+// Додаємо кнопку «Оплата» у меню
+document.getElementById("btnPayment").onclick = () => {
+    hideAllSections();
+    if(paymentSection) paymentSection.style.display = "block";
+}
+
+// Обробка кнопки «Оплата зірками»
+const btnStars = document.getElementById("btnStars");
+if(btnStars) {
+    btnStars.onclick = () => {
+        // Тут можна відправляти інвойс через tg.sendData або просто показати повідомлення
+        tg.sendData("Оплата зірками"); // це відправить дані боту, щоб він створив invoice
+        alert("Відкрийте інвойс у Telegram для оплати зірками ⭐");
+    }
+}
 
 // --------------------------
 // КОЛЕСО ФОРТУНИ
@@ -114,6 +136,7 @@ document.getElementById("btnWheel").onclick = () => {
 };
 
 spinButton.onclick = spin;
+
 
 
 
