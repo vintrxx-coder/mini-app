@@ -10,7 +10,7 @@ const tg = window.Telegram.WebApp;
 const LANGUAGES = ["UA", "RU", "EN"];
 const SEGMENTS = ["10 VINTRXX", "50 VINTRXX", "100 VINTRXX", "200 VINTRXX", "500 VINTRXX", "1000 VINTRXX"];
 const COLORS = ["#7F00FF","#00FFFF","#FF00FF","#4B0082","#8A2BE2","#00CED1"];
-const WHEEL_RADIUS = 200;
+const WHEEL_RADIUS = 160;
 
 // ------------------------------
 // СЕКЦІЇ
@@ -38,50 +38,32 @@ LANGUAGES.forEach(lang => {
 function setLanguage(lang) {
     document.documentElement.setAttribute("lang", lang);
     console.log("Language set to:", lang);
-    // Тут можна додати локалізацію текстів, наприклад через об'єкт
+    // Тут можна додати локалізацію текстів
 }
 
 // ------------------------------
 // МЕНЮ КНОПКИ
 // ------------------------------
-document.getElementById("btn1")?.addEventListener("click", () => alert("🔥 РЕЖИ"));
-document.getElementById("btn2")?.addEventListener("click", () => alert("⚙️ Налаштування"));
-document.getElementById("btn3")?.addEventListener("click", () => alert("ℹ️ Про додаток"));
-document.getElementById("btnPortfolio")?.addEventListener("click", () => window.open("https://t.me/vintrxxproject/15", "_blank"));
+document.getElementById("btnWheel")?.addEventListener("click", () => {
+    hideAllSections();
+    document.getElementById("wheelSection")?.style.display = "block";
+    drawWheel();
+});
 
+document.getElementById("btnShop")?.addEventListener("click", openShop);
+document.getElementById("btnPortfolio")?.addEventListener("click", () => {
+    hideAllSections();
+    document.getElementById("portfolioSection")?.style.display = "block";
+});
+
+// ------------------------------
+// КОНТАКТИ
+// ------------------------------
 function contactMe() { tg.openTelegramLink("https://t.me/v1ntrxx"); }
 window.contactMe = contactMe;
 
 // ------------------------------
-// КОПІЮВАННЯ КРИПТО
-// ------------------------------
-function copyToClipboard(id) {
-    const text = document.getElementById(id)?.innerText;
-    if (!text) return alert("❌ Не вдалося скопіювати");
-    navigator.clipboard.writeText(text).then(() => alert("✔️ Адресу скопійовано!"))
-        .catch(() => alert("❌ Не вдалося скопіювати"));
-}
-window.copyToClipboard = copyToClipboard;
-
-// ------------------------------
-// ОПЛАТА
-// ------------------------------
-document.getElementById("btnPayment")?.addEventListener("click", () => {
-    hideAllSections();
-    document.getElementById("paymentSection")?.style.display = "block";
-});
-
-document.getElementById("btnStars")?.addEventListener("click", () => {
-    window.open("https://t.me/starspaymenttt", "_blank");
-});
-
-document.getElementById("btnCrypto")?.addEventListener("click", () => {
-    hideAllSections();
-    document.getElementById("paymentSection")?.style.display = "block";
-});
-
-// ------------------------------
-// КОЛЕСО ФОРТУНИ - VINTRXX COIN
+// КОЛЕСО ФОРТУНИ
 // ------------------------------
 const canvas = document.getElementById("wheel");
 const ctx = canvas?.getContext("2d");
@@ -109,13 +91,13 @@ function drawWheel() {
         ctx.rotate(i * arc + arc / 2);
         ctx.textAlign = "right";
         ctx.fillStyle = "#00FFFF";
-        ctx.font = "bold 18px Arial";
+        ctx.font = "bold 16px Arial";
         ctx.fillText(SEGMENTS[i], WHEEL_RADIUS - 10, 10);
         ctx.restore();
     }
 }
 
-function spin() {
+function spinWheel() {
     if (spinning) return;
     spinning = true;
 
@@ -147,15 +129,8 @@ function spin() {
     requestAnimationFrame(animate);
 }
 
-document.getElementById("btnWheel")?.addEventListener("click", () => {
-    hideAllSections();
-    document.getElementById("wheelContainer")?.style.display = "block";
-    drawWheel();
-});
-spinButton?.addEventListener("click", spin);
-
 // ------------------------------
-// МАГАЗИН - VINTRXX COIN
+// МАГАЗИН
 // ------------------------------
 const shopItems = [
     { id: 1, name: "VIP Пакет", price: 500 },
@@ -173,17 +148,25 @@ function openShop() {
     shopItems.forEach(item => {
         const btn = document.createElement("button");
         btn.innerText = `${item.name} — ${item.price} VINTRXX`;
-        btn.className = "shopItemBtn";
+        btn.className = "glass-btn shopItemBtn";
         btn.addEventListener("click", () => alert(`💎 Ви купили: ${item.name} за ${item.price} VINTRXX`));
         shopSection.appendChild(btn);
     });
+
+    const backBtn = document.createElement("button");
+    backBtn.innerText = "⬅ Back";
+    backBtn.className = "glass-btn back-btn";
+    backBtn.addEventListener("click", openMenu);
+    shopSection.appendChild(backBtn);
 }
-document.getElementById("btnShop")?.addEventListener("click", openShop);
 
 // ------------------------------
 // ІНІЦІАЛІЗАЦІЯ
 // ------------------------------
 document.addEventListener("DOMContentLoaded", () => {
     hideAllSections();
-    openMenu();
+    document.getElementById("langSection")?.style.display = "block";
 });
+
+window.spinWheel = spinWheel;
+window.openShop = openShop;
