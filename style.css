@@ -1,8 +1,8 @@
 body {
     margin: 0;
-    background: radial-gradient(circle at top left, #0ff, #00f, #0f0);
+    background: #0b0e13; /* темний ігровий фон */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #fff;
+    color: #e6e6e6;
 }
 
 .app {
@@ -12,62 +12,56 @@ body {
 
 /* Заголовки */
 h1, h2 {
-    margin-bottom: 20px;
-    font-family: 'Poppins', sans-serif;
+    margin-bottom: 18px;
     font-weight: 600;
-    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+    color: #ffffff;
 }
 
-/* Glass кнопки з неоновою підсвіткою */
+/* Кнопки */
 .glass-btn {
     width: 100%;
-    padding: 15px;
-    margin-bottom: 15px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #0ff;
-    border: 2px solid #0ff;
-    border-radius: 20px;
-    background: rgba(0,0,0,0.2);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 20px #0ff, 0 0 30px #0ff inset;
+    padding: 14px;
+    margin-bottom: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    background: #151a22;
+    border: 1px solid #222834;
+    border-radius: 14px;
     cursor: pointer;
-    transition: all 0.3s ease;
-}
-.glass-btn:hover {
-    color: #fff;
-    background: rgba(0,255,255,0.2);
-    box-shadow: 0 0 30px #0ff, 0 0 50px #0ff inset;
-    transform: translateY(-2px) scale(1.05);
+    transition: background 0.2s ease, transform 0.15s ease;
 }
 
-/* Маленькі кнопки для копіювання */
+.glass-btn:hover {
+    background: #1c2230;
+    transform: scale(1.02);
+}
+
+/* Маленькі кнопки */
 .small-btn {
     width: auto;
     padding: 8px 12px;
-    font-size: 14px;
-    margin-top: 5px;
-    border: 1px solid #0ff;
-    box-shadow: 0 0 10px #0ff;
+    font-size: 13px;
+    background: #151a22;
+    border: 1px solid #222834;
 }
 
-/* ПОРТФОЛІО */
+/* Текст портфоліо */
 .about-text {
     font-size: 14px;
-    color: #ddd;
+    color: #bfc3c9;
     margin-bottom: 20px;
-    text-shadow: 0 0 5px #0ff;
 }
 
 /* СЕКЦІЇ */
 .section {
     padding: 20px;
-    animation: fadeIn 0.3s ease-in;
+    animation: fadeIn 0.25s ease-in;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px);}
-    to { opacity: 1; transform: translateY(0);}
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Колесо фортуни */
@@ -76,35 +70,36 @@ h1, h2 {
     height: 300px;
     max-width: 90vw;
     max-height: 90vw;
-    border: 5px solid #0ff;
     border-radius: 50%;
-    background: rgba(0,0,0,0.3);
-    box-shadow: 0 0 25px #0ff;
+    background: #11151c;
     margin: 0 auto 15px auto;
 }
 
 /* Результат */
 #result {
-    margin-top: 15px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #0ff;
-    text-shadow: 0 0 10px #0ff;
+    margin-top: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #8aff8a;
 }
 
 /* Кнопки назад */
-.back-btn { background: rgba(0,0,0,0.2); border: 1px solid #0ff;}
-.back-btn:hover { background: rgba(0,255,255,0.2); }
+.back-btn {
+    background: #10141b;
+    border: 1px solid #1f2533;
+}
 
-/* Кнопки замовити / контакт */
-.contact-btn { background: rgba(0,255,255,0.2); border: 1px solid #0ff;}
+/* Кнопка контакту */
+.contact-btn {
+    background: #1a202c;
+    border: 1px solid #2a3142;
+}
 
-/* Блоки криптокошельків */
+/* Блоки крипти */
 .crypto-wallet {
-    margin-bottom: 15px;
-    background: rgba(0,0,0,0.2);
-    padding: 10px;
-    border-radius: 15px;
-    border: 1px solid #0ff;
-    box-shadow: 0 0 15px #0ff inset;
+    margin-bottom: 14px;
+    background: #151a22;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #222834;
 }
