@@ -11,63 +11,39 @@
 
 <div class="app">
 
-    <!-- БАЛАНС -->
-    <div id="balanceBar" class="section" style="display:none;">
-        💠 <span id="balanceValue">0</span> VINTRXX COIN
-    </div>
-
     <!-- ВИБІР МОВИ -->
     <div id="langSection" class="section">
-        <h2 id="langTitle">🌐 Choose language</h2>
-        <button class="glass-btn" onclick="setLang('ua')">🇺🇦 Українська</button>
-        <button class="glass-btn" onclick="setLang('ru')">🇷🇺 Русский</button>
-        <button class="glass-btn" onclick="setLang('en')">🇬🇧 English</button>
+        <h2>🌐 Choose language</h2>
+        <button id="btnUA" class="glass-btn">🇺🇦 Українська</button>
+        <button id="btnRU" class="glass-btn">🇷🇺 Русский</button>
+        <button id="btnEN" class="glass-btn">🇬🇧 English</button>
     </div>
 
     <!-- ГОЛОВНЕ МЕНЮ -->
     <div id="menuSection" class="section" style="display:none;">
-        <h1 id="menuTitle">🚀 Menu</h1>
-
-        <button class="glass-btn" onclick="openWheel()">🎰 Wheel of Fortune</button>
-        <button class="glass-btn" onclick="openShop()">🛒 Shop</button>
-        <button class="glass-btn" onclick="openPortfolio()">🎨 Portfolio</button>
+        <h1>🚀 Menu</h1>
+        <button id="btnWheel" class="glass-btn">🎰 Wheel of Fortune</button>
+        <button id="btnShop" class="glass-btn">🛒 Shop</button>
+        <button id="btnPortfolio" class="glass-btn">🎨 Portfolio</button>
     </div>
 
     <!-- КОЛЕСО ФОРТУНИ -->
     <div id="wheelSection" class="section" style="display:none;">
-        <h2 id="wheelTitle">🎰 Wheel of Fortune</h2>
+        <h2>🎰 Wheel of Fortune</h2>
         <canvas id="wheel" width="320" height="320"></canvas>
         <div id="result"></div>
-        <button class="glass-btn" onclick="spinWheel()">🎡 Spin</button>
+        <button id="spinButton" class="glass-btn" onclick="spinWheel()">🎡 Spin</button>
         <button class="glass-btn back-btn" onclick="openMenu()">⬅ Back</button>
     </div>
 
     <!-- МАГАЗИН -->
-    <div id="shopSection" class="section" style="display:none;">
-        <h2 id="shopTitle">🛒 Shop</h2>
-
-        <div class="crypto-wallet">
-            <p id="item1Name">🔥 Boost x2 (1 hour)</p>
-            <p>💠 50 VINTRXX COIN</p>
-            <button class="glass-btn small-btn" onclick="buyItem(50)">Buy</button>
-        </div>
-
-        <div class="crypto-wallet">
-            <p id="item2Name">⭐ Premium 24h</p>
-            <p>💠 120 VINTRXX COIN</p>
-            <button class="glass-btn small-btn" onclick="buyItem(120)">Buy</button>
-        </div>
-
-        <button class="glass-btn back-btn" onclick="openMenu()">⬅ Back</button>
-    </div>
+    <div id="shopSection" class="section" style="display:none;"></div>
 
     <!-- ПОРТФОЛІО -->
     <div id="portfolioSection" class="section" style="display:none;">
-        <h2 id="portfolioTitle">🎨 Portfolio</h2>
-        <p id="portfolioText" class="about-text">
-            I am a designer. Banners, covers, posts for Telegram.
-        </p>
-        <button class="glass-btn contact-btn" onclick="contactMe()">✉ Contact</button>
+        <h2>🎨 Portfolio</h2>
+        <p>I am a designer. Banners, covers, posts for Telegram.</p>
+        <button class="glass-btn" onclick="contactMe()">✉ Contact</button>
         <button class="glass-btn back-btn" onclick="openMenu()">⬅ Back</button>
     </div>
 
