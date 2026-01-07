@@ -7,73 +7,84 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="app">
+<div class="app">
 
-        <!-- ПРОСТІР ДЛЯ БАНЕРА -->
-        <div id="bannerSection" class="section" style="height:80px;"></div>
+    <!-- ПРОСТІР ДЛЯ БАНЕРА -->
+    <div id="bannerSection" class="section" style="height:80px;"></div>
 
-        <!-- ВИБІР МОВИ -->
-        <div id="langSection" class="section">
-            <h2>🌐 Оберіть мову / Choose Language / Выберите язык</h2>
-            <button class="glass-btn" id="btnUA">🇺🇦 Українська</button>
-            <button class="glass-btn" id="btnRU">🇷🇺 Русский</button>
-            <button class="glass-btn" id="btnEN">🇬🇧 English</button>
-        </div>
-
-        <!-- МЕНЮ -->
-        <div id="menuSection" class="section" style="display:none;">
-            <h1 id="menuTitle">🚀 Головне меню</h1>
-            <button class="glass-btn" id="btn1">Режим</button>
-            <button class="glass-btn" id="btn2">Налаштування</button>
-            <button class="glass-btn" id="btn3">Інфо</button>
-            <button class="glass-btn" id="btnWheel">🎰 Колесо Фортуни</button>
-            <button class="glass-btn" id="btnPortfolio">🎨 Портфоліо</button>
-            <button class="glass-btn" id="btnPayment">💰 Оплата</button>
-        </div>
-
-        <!-- КОЛЕСО ФОРТУНИ -->
-        <div id="wheelContainer" class="section" style="display:none;">
-            <h2>🎰 Колесо Фортуни</h2>
-            <canvas id="wheel" width="400" height="400"></canvas>
-            <div id="result"></div>
-            <button id="spinButton" class="glass-btn">Крутити 🎡</button>
-            <button class="glass-btn back-btn" onclick="openMenu()">⬅️ Назад</button>
-        </div>
-
-        <!-- ПОРТФОЛІО -->
-        <div id="portfolioSection" class="section" style="display:none;">
-            <h2>🎨 Моє портфоліо</h2>
-            <p class="about-text">
-                Я дизайнер. Роблю банери, обкладинки та пости для Telegram.<br>
-                Працюю швидко та якісно.
-            </p>
-            <button class="glass-btn contact-btn" onclick="contactMe()">✉️ Замовити дизайн</button>
-            <button class="glass-btn back-btn" onclick="openMenu()">⬅️ Назад</button>
-        </div>
-
-        <!-- ОПЛАТА -->
-        <div id="paymentSection" class="section" style="display:none;">
-            <h2 id="paymentTitle">💰 Оплата</h2>
-            <p id="paymentText">Оберіть спосіб оплати:</p>
-
-            <!-- Оплата зірками -->
-            <button class="glass-btn" id="btnStars">⭐️ Оплата зірками</button>
-
-            <!-- Криптовалюта -->
-            <div class="crypto-wallet">
-                <p>💎 TONKEEPER: <span id="tonkeeper">UQBRaEiFd3KkCsaezd9_KvGZgBBxfKtvo6kfyKRwlLNgD76A</span></p>
-                <button class="glass-btn small-btn" onclick="copyToClipboard('tonkeeper')">📋 Скопіювати</button>
-            </div>
-            <div class="crypto-wallet">
-                <p>💎 Crypto bot: <span id="cryptobot">UQC15mKXO2tS5TcyUPFuv0oajH120jG6sm5Q4vLRBDvZOZFB</span></p>
-                <button class="glass-btn small-btn" onclick="copyToClipboard('cryptobot')">📋 Скопіювати</button>
-            </div>
-            <button class="glass-btn" onclick="contactMe()">❓ Інша криптовалюта / Зв'язатися зі мною</button>
-            <button class="glass-btn back-btn" onclick="openMenu()">⬅️ Назад</button>
-        </div>
-
+    <!-- ВИБІР МОВИ -->
+    <div id="langSection" class="section">
+        <h2>🌐 Оберіть мову / Choose Language / Выберите язык</h2>
+        <button class="glass-btn" id="btnUA">🇺🇦 Українська</button>
+        <button class="glass-btn" id="btnRU">🇷🇺 Русский</button>
+        <button class="glass-btn" id="btnEN">🇬🇧 English</button>
     </div>
 
-    <script src="app.js"></script>
+    <!-- МЕНЮ -->
+    <div id="menuSection" class="section" style="display:none;">
+        <h1 id="menuTitle">🚀 Головне меню</h1>
+        <button class="glass-btn" id="btn1">Режим</button>
+        <button class="glass-btn" id="btn2">Налаштування</button>
+        <button class="glass-btn" id="btn3">Інфо</button>
+        <button class="glass-btn" id="btnWheel">🎰 Колесо Фортуни</button>
+        <button class="glass-btn" id="btnPortfolio">🎨 Портфоліо</button>
+        <button class="glass-btn" id="btnPayment">💰 Оплата</button>
+    </div>
+
+    <!-- КОЛЕСО ФОРТУНИ -->
+    <div id="wheelContainer" class="section" style="display:none;">
+        <h2>🎰 Колесо Фортуни</h2>
+        <div id="balance" style="margin:10px 0;font-weight:bold;"></div>
+        <canvas id="wheel" width="400" height="400"></canvas>
+        <div id="result"></div>
+        <button class="glass-btn" id="spinButton">🎡 Безкоштовний прокрут</button>
+        <button class="glass-btn" id="btnShop">🛒 Магазин</button>
+        <button class="glass-btn back-btn" onclick="openMenu()">⬅️ Назад</button>
+    </div>
+
+    <!-- МАГАЗИН -->
+    <div id="shopSection" class="section" style="display:none;">
+        <h2>🛒 Магазин</h2>
+        <div class="crypto-wallet">
+            <p>🎨 Дизайн-стікер</p>
+            <button class="glass-btn small-btn" onclick="buyItem(100)">Купити за 100 🧬</button>
+        </div>
+        <div class="crypto-wallet">
+            <p>🚀 Преміум доступ</p>
+            <button class="glass-btn small-btn" onclick="buyItem(300)">Купити за 300 🧬</button>
+        </div>
+        <button class="glass-btn back-btn" onclick="openMenu()">⬅️ Назад</button>
+    </div>
+
+    <!-- ПОРТФОЛІО -->
+    <div id="portfolioSection" class="section" style="display:none;">
+        <h2>🎨 Моє портфоліо</h2>
+        <p class="about-text">
+            Я дизайнер. Роблю банери, обкладинки та пости для Telegram.<br>
+            Працюю швидко та якісно.
+        </p>
+        <button class="glass-btn contact-btn" onclick="contactMe()">✉️ Замовити дизайн</button>
+        <button class="glass-btn back-btn" onclick="openMenu()">⬅️ Назад</button>
+    </div>
+
+    <!-- ОПЛАТА -->
+    <div id="paymentSection" class="section" style="display:none;">
+        <h2 id="paymentTitle">💰 Оплата</h2>
+        <p id="paymentText">Оберіть спосіб оплати:</p>
+        <button class="glass-btn" id="btnStars">⭐️ Оплата зірками</button>
+        <div class="crypto-wallet">
+            <p>💎 TONKEEPER: <span id="tonkeeper">UQBRaEiFd3KkCsaezd9_KvGZgBBxfKtvo6kfyKRwlLNgD76A</span></p>
+            <button class="glass-btn small-btn" onclick="copyToClipboard('tonkeeper')">📋 Скопіювати</button>
+        </div>
+        <div class="crypto-wallet">
+            <p>💎 Crypto bot: <span id="cryptobot">UQC15mKXO2tS5TcyUPFuv0oajH120jG6sm5Q4vLRBDvZOZFB</span></p>
+            <button class="glass-btn small-btn" onclick="copyToClipboard('cryptobot')">📋 Скопіювати</button>
+        </div>
+        <button class="glass-btn" onclick="contactMe()">❓ Інша криптовалюта / Зв'язатися зі мною</button>
+        <button class="glass-btn back-btn" onclick="openMenu()">⬅️ Назад</button>
+    </div>
+
+</div>
+<script src="app.js"></script>
 </body>
 </html>
