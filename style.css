@@ -1,128 +1,33 @@
-body {
-    margin: 0;
-    background: radial-gradient(circle at top left, #0b1024, #060818);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #fff;
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#0e0e0e;
+    color:white;
 }
-
-.app {
-    padding: 20px;
-    text-align: center;
+.app{
+    padding:20px;
+    text-align:center;
 }
-
-/* Заголовки */
-h1, h2 {
-    margin-bottom: 20px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    text-shadow: 
-        0 0 6px rgba(139,92,255,0.6),
-        0 0 14px rgba(58,169,255,0.4);
+.section{
+    margin-bottom:20px;
 }
-
-/* Glass кнопки */
-.glass-btn {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 15px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #b8c7ff;
-    border: 1px solid rgba(139,92,255,0.6);
-    border-radius: 20px;
-    background: rgba(10,15,40,0.6);
-    backdrop-filter: blur(12px);
-    box-shadow:
-        0 0 15px rgba(58,169,255,0.25),
-        inset 0 0 15px rgba(139,92,255,0.15);
-    cursor: pointer;
-    transition: all 0.3s ease;
+.glass-btn{
+    display:block;
+    width:90%;
+    margin:10px auto;
+    padding:15px;
+    border:none;
+    border-radius:15px;
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(10px);
+    color:#00FFFF;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
 }
-
-.glass-btn:hover {
-    color: #fff;
-    background: rgba(58,169,255,0.12);
-    box-shadow:
-        0 0 30px rgba(58,169,255,0.6),
-        inset 0 0 20px rgba(139,92,255,0.3);
-    transform: translateY(-2px) scale(1.03);
+.glass-btn:hover{
+    background:rgba(255,255,255,0.2);
 }
-
-/* Маленькі кнопки */
-.small-btn {
-    width: auto;
-    padding: 8px 12px;
-    font-size: 14px;
-    margin-top: 5px;
-    border: 1px solid rgba(58,169,255,0.6);
-    box-shadow: 0 0 10px rgba(58,169,255,0.5);
-}
-
-/* Текст */
-.about-text {
-    font-size: 14px;
-    color: #cfd3ff;
-    margin-bottom: 20px;
-    text-shadow: 0 0 6px rgba(139,92,255,0.4);
-}
-
-/* Секції */
-.section {
-    padding: 20px;
-    animation: fadeIn 0.35s ease-in;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px);}
-    to { opacity: 1; transform: translateY(0);}
-}
-
-/* Колесо фортуни */
-#wheel {
-    width: 300px;
-    height: 300px;
-    max-width: 90vw;
-    max-height: 90vw;
-    border-radius: 50%;
-    background: rgba(10,15,40,0.7);
-    border: 2px solid rgba(139,92,255,0.8);
-    box-shadow:
-        0 0 35px rgba(58,169,255,0.5),
-        inset 0 0 30px rgba(139,92,255,0.25);
-    margin: 0 auto 15px auto;
-}
-
-/* Результат */
-#result {
-    margin-top: 15px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #8b5cff;
-    text-shadow: 0 0 12px rgba(139,92,255,0.7);
-}
-
-/* Кнопки назад */
-.back-btn {
-    background: rgba(10,15,40,0.6);
-    border: 1px solid rgba(139,92,255,0.5);
-}
-
-.back-btn:hover {
-    background: rgba(139,92,255,0.15);
-}
-
-/* Контакт */
-.contact-btn {
-    background: rgba(58,169,255,0.15);
-    border: 1px solid rgba(58,169,255,0.6);
-}
-
-/* Крипто-блоки */
-.crypto-wallet {
-    margin-bottom: 15px;
-    background: rgba(10,15,40,0.6);
-    padding: 10px;
-    border-radius: 15px;
-    border: 1px solid rgba(139,92,255,0.6);
-    box-shadow: inset 0 0 15px rgba(139,92,255,0.25);
+.back-btn{
+    background:rgba(255,0,255,0.2);
 }
