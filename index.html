@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <title>VINTRXX Mini App</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>VINTRXX Mini App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -32,8 +32,8 @@
         <h2>🎰 Wheel of Fortune</h2>
         <canvas id="wheel" width="320" height="320"></canvas>
         <div id="result"></div>
-        <button id="spinButton" class="glass-btn" onclick="spinWheel()">🎡 Spin</button>
-        <button class="glass-btn back-btn" onclick="openMenu()">⬅ Back</button>
+        <button id="spinButton" class="glass-btn">🎡 Spin</button>
+        <button class="glass-btn back-btn" id="backFromWheel">⬅ Back</button>
     </div>
 
     <!-- МАГАЗИН -->
@@ -43,8 +43,8 @@
     <div id="portfolioSection" class="section" style="display:none;">
         <h2>🎨 Portfolio</h2>
         <p>I am a designer. Banners, covers, posts for Telegram.</p>
-        <button class="glass-btn" onclick="contactMe()">✉ Contact</button>
-        <button class="glass-btn back-btn" onclick="openMenu()">⬅ Back</button>
+        <button class="glass-btn" id="contactBtn">✉ Contact</button>
+        <button class="glass-btn back-btn" id="backFromPortfolio">⬅ Back</button>
     </div>
 
 </div>
