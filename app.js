@@ -1,159 +1,123 @@
 const tg = window.Telegram.WebApp;
 
-// ------------------------------
-// КОНСТАНТИ
-// ------------------------------
-const LANGUAGES = ["UA", "RU", "EN"];
-const SEGMENTS = ["10 VINTRXX","50 VINTRXX","100 VINTRXX","200 VINTRXX","500 VINTRXX","1000 VINTRXX"];
-const COLORS = ["#7F00FF","#00FFFF","#FF00FF","#4B0082","#8A2BE2","#00CED1"];
-const WHEEL_RADIUS = 160;
-
-// ------------------------------
-// СЕКЦІЇ
-// ------------------------------
-function hideAllSections() {
-    document.querySelectorAll(".section").forEach(sec => sec.style.display="none");
-}
-
-function openMenu() {
-    hideAllSections();
-    document.getElementById("menuSection").style.display="block";
-}
-
-// ------------------------------
+// --------------------------
 // ВИБІР МОВИ
-// ------------------------------
-LANGUAGES.forEach(lang=>{
-    document.getElementById(`btn${lang}`).addEventListener("click",()=>{
-        setLanguage(lang);
+// --------------------------
+["btnUA","btnRU","btnEN"].forEach(id=>{
+    document.getElementById(id).onclick = () => {
+        hideAllSections();
         openMenu();
-    });
+    }
 });
 
-function setLanguage(lang){
-    document.documentElement.setAttribute("lang", lang);
-    console.log("Language set to:",lang);
+// --------------------------
+// МЕНЮ КНОПКИ
+// --------------------------
+document.getElementById("btn1").onclick = () => alert("🔥 РЕЖИ");
+document.getElementById("btn2").onclick = () => alert("⚙️ Тут налаштування");
+document.getElementById("btn3").onclick = () => alert("ℹ️ Туо ап");
+document.getElementById("btnPortfolio").onclick = () => window.open("https://t.me/vintrxxproject/15", "_blank");
+
+function contactMe() { tg.openTelegramLink("https://t.me/v1ntrxx"); }
+window.contactMe = contactMe;
+
+// --------------------------
+// КОПІЮВАННЯ КРИПТО
+// --------------------------
+function copyToClipboard(id){
+    const text = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(text).then(()=>alert("✔️ Адресу скопійовано!"))
+    .catch(()=>alert("❌ Не вдалося скопіювати"));
+}
+window.copyToClipboard = copyToClipboard;
+
+// --------------------------
+// ОПЛАТА
+// --------------------------
+document.getElementById("btnPayment").onclick = () => {
+    hideAllSections();
+    document.getElementById("paymentSection").style.display="block";
 }
 
-// ------------------------------
-// МЕНЮ КНОПКИ
-// ------------------------------
-document.getElementById("btnWheel").addEventListener("click",()=>{
-    hideAllSections();
-    document.getElementById("wheelSection").style.display="block";
-    drawWheel();
-});
+// ⭐️ Оплата зірками
+document.getElementById("btnStars")?.addEventListener("click",()=>window.open("https://t.me/starspaymenttt","_blank"));
 
-document.getElementById("btnShop").addEventListener("click",openShop);
-document.getElementById("btnPortfolio").addEventListener("click",()=>{
-    hideAllSections();
-    document.getElementById("portfolioSection").style.display="block";
-});
+// 💎 Оплата крипто
+document.getElementById("btnCrypto")?.addEventListener("click",()=>document.getElementById("paymentSection").style.display="block");
 
-// ------------------------------
-// ПОРТФОЛІО
-// ------------------------------
-document.getElementById("backFromPortfolio").addEventListener("click",openMenu);
-document.getElementById("contactBtn").addEventListener("click",()=>tg.openTelegramLink("https://t.me/v1ntrxx"));
-
-// ------------------------------
+// --------------------------
 // КОЛЕСО ФОРТУНИ
-// ------------------------------
+// --------------------------
 const canvas = document.getElementById("wheel");
-const ctx = canvas.getContext("2d");
+const ctx = canvas?.getContext("2d");
 const resultDiv = document.getElementById("result");
 const spinButton = document.getElementById("spinButton");
 
-let angle=0;
-let spinning=false;
-const arc = 2*Math.PI/SEGMENTS.length;
+const segments = ["10 ⭐️","50 ⭐️","100 ⭐️","200 ⭐️","500 ⭐️","1000 ⭐️"];
+const colors = ["#FF00FF","#00FFFF","#FF0","#0F0","#F0F","#0FF"];
+const arc = 2*Math.PI/segments.length;
+let angle=0, spinning=false;
 
 function drawWheel(){
     if(!ctx) return;
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    for(let i=0;i<SEGMENTS.length;i++){
+    for(let i=0;i<segments.length;i++){
         ctx.beginPath();
-        ctx.fillStyle=COLORS[i];
-        ctx.moveTo(WHEEL_RADIUS,WHEEL_RADIUS);
-        ctx.arc(WHEEL_RADIUS,WHEEL_RADIUS,WHEEL_RADIUS,i*arc,(i+1)*arc);
+        ctx.fillStyle=colors[i];
+        ctx.moveTo(200,200);
+        ctx.arc(200,200,200,i*arc,(i+1)*arc);
         ctx.fill();
-        // текст
         ctx.save();
-        ctx.translate(WHEEL_RADIUS,WHEEL_RADIUS);
-        ctx.rotate(i*arc + arc/2);
-        ctx.fillStyle="#00FFFF";
-        ctx.font="bold 16px Arial";
+        ctx.translate(200,200);
+        ctx.rotate(i*arc+arc/2);
         ctx.textAlign="right";
-        ctx.fillText(SEGMENTS[i],WHEEL_RADIUS-10,10);
+        ctx.fillStyle="#0ff";
+        ctx.font="bold 18px Arial";
+        ctx.fillText(segments[i],190,10);
         ctx.restore();
     }
 }
 
-function spinWheel(){
+function spin(){
     if(spinning) return;
     spinning=true;
-    const spinAngle = Math.random()*10 + 10;
-    const duration=3000;
-    let start=null;
-
+    const spinAngle=Math.random()*10+10;
+    const duration=3000; let start=null;
     function animate(time){
         if(!start) start=time;
         const progress=time-start;
         const ease=1-Math.pow(1-progress/duration,3);
         angle+=spinAngle*ease/60;
-
+        ctx.clearRect(0,0,400,400);
         ctx.save();
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-        ctx.translate(WHEEL_RADIUS,WHEEL_RADIUS);
+        ctx.translate(200,200);
         ctx.rotate(angle);
-        ctx.translate(-WHEEL_RADIUS,-WHEEL_RADIUS);
+        ctx.translate(-200,-200);
         drawWheel();
         ctx.restore();
-
         if(progress<duration) requestAnimationFrame(animate);
-        else{
+        else {
             spinning=false;
-            const index=Math.floor((SEGMENTS.length-(angle%(2*Math.PI))/arc)%SEGMENTS.length);
-            resultDiv.innerText=`🎉 Ви виграли: ${SEGMENTS[index]}`;
+            const index=Math.floor((segments.length-(angle%(2*Math.PI))/arc)%segments.length);
+            resultDiv.innerText=🎉 Ви виграли: ${segments[index]};
         }
     }
     requestAnimationFrame(animate);
 }
-spinButton.addEventListener("click",spinWheel);
-document.getElementById("backFromWheel").addEventListener("click",openMenu);
 
-// ------------------------------
-// МАГАЗИН
-// ------------------------------
-const shopItems = [
-    {id:1,name:"VIP Пакет",price:500},
-    {id:2,name:"Секретний Кейс",price:300},
-    {id:3,name:"Ексклюзивний Аватар",price:200}
-];
-
-function openShop(){
+document.getElementById("btnWheel").onclick=()=>{
     hideAllSections();
-    const shopSection = document.getElementById("shopSection");
-    shopSection.innerHTML="<h2 style='color:#00FFFF;'>🛒 Магазин VINTRXX COIN</h2>";
-    shopItems.forEach(item=>{
-        const btn=document.createElement("button");
-        btn.innerText=`${item.name} — ${item.price} VINTRXX`;
-        btn.className="glass-btn shopItemBtn";
-        btn.addEventListener("click",()=>alert(`💎 Ви купили: ${item.name} за ${item.price} VINTRXX`));
-        shopSection.appendChild(btn);
-    });
-    const backBtn=document.createElement("button");
-    backBtn.innerText="⬅ Back";
-    backBtn.className="glass-btn back-btn";
-    backBtn.addEventListener("click",openMenu);
-    shopSection.appendChild(backBtn);
-    shopSection.style.display="block";
-}
+    document.getElementById("wheelContainer").style.display="block";
+    drawWheel();
+};
+spinButton?.addEventListener("click",spin);
 
-// ------------------------------
-// ІНІЦІАЛІЗАЦІЯ
-// ------------------------------
-document.addEventListener("DOMContentLoaded",()=>{
-    hideAllSections();
-    document.getElementById("langSection").style.display="block";
-});
+// --------------------------
+// Меню
+// --------------------------
+function openMenu(){hideAllSections();document.getElementById("menuSection").style.display="block";}
+window.openMenu=openMenu;
+
+// --------------------------
+// Приховати всі секції
+// --------------------------
+function hideAllSections(){document.querySelectorAll(".section").forEach(sec=>sec.style.display="none");}
