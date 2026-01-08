@@ -1,33 +1,110 @@
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#0e0e0e;
-    color:white;
+body {
+    margin: 0;
+    background: radial-gradient(circle at top left, #0ff, #00f, #0f0);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
 }
-.app{
-    padding:20px;
-    text-align:center;
+
+.app {
+    padding: 20px;
+    text-align: center;
 }
-.section{
-    margin-bottom:20px;
+
+/* Заголовки */
+h1, h2 {
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
 }
-.glass-btn{
-    display:block;
-    width:90%;
-    margin:10px auto;
-    padding:15px;
-    border:none;
-    border-radius:15px;
-    background:rgba(255,255,255,0.1);
-    backdrop-filter:blur(10px);
-    color:#00FFFF;
-    font-weight:bold;
-    cursor:pointer;
-    transition:0.3s;
+
+/* Glass кнопки з неоновою підсвіткою */
+.glass-btn {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #0ff;
+    border: 2px solid #0ff;
+    border-radius: 20px;
+    background: rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px #0ff, 0 0 30px #0ff inset;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
-.glass-btn:hover{
-    background:rgba(255,255,255,0.2);
+.glass-btn:hover {
+    color: #fff;
+    background: rgba(0,255,255,0.2);
+    box-shadow: 0 0 30px #0ff, 0 0 50px #0ff inset;
+    transform: translateY(-2px) scale(1.05);
 }
-.back-btn{
-    background:rgba(255,0,255,0.2);
+
+/* Маленькі кнопки для копіювання */
+.small-btn {
+    width: auto;
+    padding: 8px 12px;
+    font-size: 14px;
+    margin-top: 5px;
+    border: 1px solid #0ff;
+    box-shadow: 0 0 10px #0ff;
+}
+
+/* ПОРТФОЛІО */
+.about-text {
+    font-size: 14px;
+    color: #ddd;
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px #0ff;
+}
+
+/* СЕКЦІЇ */
+.section {
+    padding: 20px;
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+/* Колесо фортуни */
+#wheel {
+    width: 300px;
+    height: 300px;
+    max-width: 90vw;
+    max-height: 90vw;
+    border: 5px solid #0ff;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.3);
+    box-shadow: 0 0 25px #0ff;
+    margin: 0 auto 15px auto;
+}
+
+/* Результат */
+#result {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #0ff;
+    text-shadow: 0 0 10px #0ff;
+}
+
+/* Кнопки назад */
+.back-btn { background: rgba(0,0,0,0.2); border: 1px solid #0ff;}
+.back-btn:hover { background: rgba(0,255,255,0.2); }
+
+/* Кнопки замовити / контакт */
+.contact-btn { background: rgba(0,255,255,0.2); border: 1px solid #0ff;}
+
+/* Блоки криптокошельків */
+.crypto-wallet {
+    margin-bottom: 15px;
+    background: rgba(0,0,0,0.2);
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid #0ff;
+    box-shadow: 0 0 15px #0ff inset;
 }
