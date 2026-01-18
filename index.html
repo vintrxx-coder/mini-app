@@ -1,79 +1,55 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Мій Mini App</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Designer Mini App</title>
+
+  <!-- Telegram SDK -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="app">
 
-        <!-- ПРОСТІР ДЛЯ БАНЕРА -->
-        <div id="bannerSection" class="section" style="height:80px;"></div>
+<header>
+  <h1>🔥 PRO DESIGNER</h1>
+  <p>UI / NFT / Telegram / Branding</p>
+</header>
 
-        <!-- ВИБІР МОВИ -->
-        <div id="langSection" class="section">
-            <h2>🌐 Оберіть мову / Choose Language / Выберите язык</h2>
-            <button class="glass-btn" id="btnUA">🇺🇦 Українська</button>
-            <button class="glass-btn" id="btnRU">🇷🇺 Русский</button>
-            <button class="glass-btn" id="btnEN">🇬🇧 English</button>
-        </div>
+<main class="container">
 
-        <!-- МЕНЮ -->
-        <div id="menuSection" class="section" style="display:none;">
-            <h1 id="menuTitle">🚀 Головне меню</h1>
-            <button class="glass-btn" id="btn1">Режим</button>
-            <button class="glass-btn" id="btn2">Налаштування</button>
-            <button class="glass-btn" id="btn3">Інфо</button>
-            <button class="glass-btn" id="btnWheel">🎰 Колесо Фортуни</button>
-            <button class="glass-btn" id="btnPortfolio">🎨 Портфоліо</button>
-            <button class="glass-btn" id="btnPayment">💰 Оплата</button>
-        </div>
-
-        <!-- КОЛЕСО ФОРТУНИ -->
-        <div id="wheelContainer" class="section" style="display:none;">
-            <h2>🎰 Колесо Фортуни</h2>
-            <canvas id="wheel" width="400" height="400"></canvas>
-            <div id="result"></div>
-            <button id="spinButton" class="glass-btn">Крутити 🎡</button>
-            <button class="glass-btn back-btn" onclick="openMenu()">⬅️ Назад</button>
-        </div>
-
-        <!-- ПОРТФОЛІО -->
-        <div id="portfolioSection" class="section" style="display:none;">
-            <h2>🎨 Моє портфоліо</h2>
-            <p class="about-text">
-                Я дизайнер. Роблю банери, обкладинки та пости для Telegram.<br>
-                Працюю швидко та якісно.
-            </p>
-            <button class="glass-btn contact-btn" onclick="contactMe()">✉️ Замовити дизайн</button>
-            <button class="glass-btn back-btn" onclick="openMenu()">⬅️ Назад</button>
-        </div>
-
-        <!-- ОПЛАТА -->
-        <div id="paymentSection" class="section" style="display:none;">
-            <h2 id="paymentTitle">💰 Оплата</h2>
-            <p id="paymentText">Оберіть спосіб оплати:</p>
-
-            <!-- Оплата зірками -->
-            <button class="glass-btn" id="btnStars">⭐️ Оплата зірками</button>
-
-            <!-- Криптовалюта -->
-            <div class="crypto-wallet">
-                <p>💎 TONKEEPER: <span id="tonkeeper">UQBRaEiFd3KkCsaezd9_KvGZgBBxfKtvo6kfyKRwlLNgD76A</span></p>
-                <button class="glass-btn small-btn" onclick="copyToClipboard('tonkeeper')">📋 Скопіювати</button>
-            </div>
-            <div class="crypto-wallet">
-                <p>💎 Crypto bot: <span id="cryptobot">UQC15mKXO2tS5TcyUPFuv0oajH120jG6sm5Q4vLRBDvZOZFB</span></p>
-                <button class="glass-btn small-btn" onclick="copyToClipboard('cryptobot')">📋 Скопіювати</button>
-            </div>
-            <button class="glass-btn" onclick="contactMe()">❓ Інша криптовалюта / Зв'язатися зі мною</button>
-            <button class="glass-btn back-btn" onclick="openMenu()">⬅️ Назад</button>
-        </div>
-
+  <section class="card">
+    <h2>🎨 Portfolio</h2>
+    <div class="portfolio">
+      <div class="work">Case #1</div>
+      <div class="work">Case #2</div>
+      <div class="work">Case #3</div>
+      <div class="work">Case #4</div>
     </div>
+  </section>
 
-    <script src="app.js"></script>
+  <section class="card">
+    <h2>⭐ Reviews</h2>
+    <div class="review">“Fast, stylish, very professional 🔥”</div>
+    <div class="review">“Best Telegram designer I worked with.”</div>
+    <div class="review">“Clean UI, premium feel.”</div>
+  </section>
+
+  <section class="card">
+    <h2>💼 Order Design</h2>
+    <p>Full custom design for your project</p>
+    <div class="price">$99</div>
+    <button id="orderBtn">Order & Pay</button>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 • Telegram Mini App
+</footer>
+
+<script src="app.js"></script>
 </body>
 </html>
