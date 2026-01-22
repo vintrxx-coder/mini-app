@@ -59,10 +59,11 @@ header p {
 }
 
 .work {
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1 / 1; /* квадрат */
   border-radius: 16px;
   background-size: cover;
   background-position: center;
+  background-color: #1f1f2a; /* тимчасовий фон якщо картинки нема */
 }
 
 /* REVIEWS */
@@ -105,3 +106,4 @@ footer {
   font-size: 13px;
   color: var(--muted);
 }
+
