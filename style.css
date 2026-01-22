@@ -17,6 +17,7 @@ body {
   color: var(--text);
 }
 
+/* HEADER */
 header {
   padding: 24px;
   text-align: center;
@@ -32,6 +33,7 @@ header p {
   margin-top: 6px;
 }
 
+/* LAYOUT */
 .container {
   padding: 16px;
   display: grid;
@@ -49,6 +51,7 @@ header p {
   margin-top: 0;
 }
 
+/* PORTFOLIO */
 .portfolio {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -56,15 +59,13 @@ header p {
 }
 
 .work {
-  background: #1f1f2a;
+  aspect-ratio: 1 / 1;
   border-radius: 16px;
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--muted);
+  background-size: cover;
+  background-position: center;
 }
 
+/* REVIEWS */
 .review {
   font-size: 14px;
   color: var(--muted);
@@ -73,6 +74,7 @@ header p {
   margin-bottom: 10px;
 }
 
+/* PRICE + BUTTON */
 .price {
   font-size: 28px;
   font-weight: bold;
@@ -96,6 +98,7 @@ button:hover {
   opacity: 0.9;
 }
 
+/* FOOTER */
 footer {
   text-align: center;
   padding: 20px;
