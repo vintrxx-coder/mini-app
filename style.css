@@ -59,10 +59,25 @@ header p {
 }
 
 .work {
+  position: relative;
   aspect-ratio: 1 / 1;
   border-radius: 16px;
   background-size: cover;
   background-position: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Підпис на квадратику */
+.work .caption {
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  margin-bottom: 8px;
 }
 
 /* REVIEWS */
